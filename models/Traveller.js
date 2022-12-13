@@ -20,6 +20,10 @@ Traveller.init(
             allowNull:false
         }        
 
+    },
+    {
+        sequelize,
+        modelName: 'traveller'
     }
 
 );
