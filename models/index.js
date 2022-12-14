@@ -1,14 +1,12 @@
 const Traveller = require('./Traveller.js');
-const Trips = require = ('./Trips.js');
-const Location = require = ('./Location.js');
+const Trip = require ('./Trip.js');
+const Location = require ('./Location.js');
 
-
-Trips.hasMany(Traveller,{
-    foreignKey: 'traveller_id'
-
+Traveller.hasMany(Trip,{
+    foreignKey : 'traveller_id'
 });
-
-Trips.hasMany(Location,{
+Location.hasMany( Trip,{
     foreignKey:'location_id'
 });
 
+module.exports = {Traveller, Trip, Location}
