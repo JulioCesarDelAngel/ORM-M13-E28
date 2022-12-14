@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const sequelize = requiere('./config/connection.js');
+const sequelize = require('./config/connection.js');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -8,5 +8,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-app.listen(PORT, () => console.log('Now listening'));
+//activar la sincronizacion de DB - Models
+sequelize.sync({ force : false}).then(() => {
+    app.listen(PORT, () => console.log( ` Now listening on port ${PORT} `));
+});
