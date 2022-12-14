@@ -37,7 +37,10 @@ Trip.init(
     },
     {
         sequelize,
-        modelName: 'trips'
+        timestamps: false,      // no agrega timestamp attributes (updatedAt, createdAt)
+        freezeTableName: true, //singular o como se ha definido la tabla
+        underscored: false,   //no agregar guin bajo
+        modelName: 'trip'
     }
 )
 
