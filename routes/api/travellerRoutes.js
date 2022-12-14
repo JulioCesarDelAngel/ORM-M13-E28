@@ -11,4 +11,15 @@ router.get('/', async (request, response) => {
     }
 });
 
+router.post('/', async (request, response) => {
+    try {
+        const traveller = await Traveller.create(request.body);
+        response.status(200).json(traveller);
+    }
+    catch ( error ){
+        response.status(500).json( error );
+    }
+});
+
+
 module.exports = router;
