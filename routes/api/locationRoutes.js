@@ -4,11 +4,19 @@ const { Location } = require('../../models');
 
 router.get('/:id', async (request, response) => {
     try{
-        response.status(200).json({
-            "code": 200,
-            "Message": "TestOk",
-            "data": []
-        });
+        const location = await Location.findByPk(request.params.id);
+
+        if (location === null) {
+            response.status(400).json({
+                "code": 400,
+                "Message": "No se encontro el registro solicitado.",
+                "data": []
+            })
+        }
+        else {
+            response.status(200).json(location);
+        }
+        
     }
     catch ( error ) {
         response.status(500).json( error);
