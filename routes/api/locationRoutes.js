@@ -7,6 +7,7 @@ router.get('/', async ( request, response) => {
             const locations = await Location.findAll();
             response.status(200).json(locations);
     }
+    
     catch ( error ){
         response.status(500).json( error);
     }
